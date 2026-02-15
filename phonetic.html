@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonetic Mastery 2026 - © Prof. Johnatan Willow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@400;600;800&display=swap');
+        body { font-family: 'Outfit', sans-serif; background-color: #080c14; color: white; overflow: hidden; height: 100vh; }
+        
+        /* Shelf & Product Design */
+        .shelf { background: linear-gradient(to bottom, #1e293b, #0f172a); height: 12px; border-radius: 20px; position: relative; margin-bottom: 50px; border: 1px solid rgba(255,255,255,0.05); }
+        .product-silhouette {
+            height: 75px; width: 65px; background: #1e293b; border: 2px solid #334155;
+            border-radius: 8px 8px 3px 3px; position: absolute; bottom: 12px;
+            cursor: pointer; transition: 0.3s; 
+            display: flex; align-items: center; justify-content: center; text-align: center; 
+            font-weight: 800; color: #94a3b8; font-size: 0.55rem; padding: 4px; text-transform: uppercase;
+        }
+        .product-silhouette:hover { transform: scale(1.1) translateY(-8px); background: #4f46e5; color: white; border-color: #818cf8; }
+
+        /* Vision Overlay - Alta Visibilidade */
+        #vision-overlay {
+            display: none; position: fixed; inset: 0; background: #000; z-index: 2000;
+            flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;
+        }
+        .big-text { font-size: 9vw; font-weight: 900; color: #fbbf24; line-height: 1; letter-spacing: -2px; }
+        .big-phonetic { font-size: 5vw; font-family: monospace; color: #60a5fa; margin-top: 15px; background: #111827; padding: 10px 30px; border-radius: 100px; border: 2px solid #1e293b; }
+        .transcription-text { font-size: 3vw; color: #fff; margin-top: 20px; font-style: italic; opacity: 0; transition: 0.3s; }
+        .transcription-text.visible { opacity: 1; }
+
+        .copyright-tag { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #fbbf24; }
+        
+        /* Ajuste do botão de voltar para sobrepor o fundo preto */
+        .back-hub-btn {
+            position: fixed; top: 10px; left: 10px; background: #1e293b; color: white; 
+            padding: 10px; border-radius: 5px; text-decoration: none; z-index: 3001; 
+            font-size: 12px; font-weight: bold; border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .back-hub-btn:hover { background: #6366f1; border-color: white; }
+    </style>
+</head>
+<body class="flex flex-col">
+
+    <a href="./index.html" class="back-hub-btn">
+        <i class="fas fa-home"></i> ⬅ Voltar ao Menu
+    </a>
+
+    <div class="fixed top-4 right-6 z-[100] text-right pointer-events-none">
+        <p class="copyright-tag">© 2026 PROF. JOHNATAN WILLOW</p>
+        <p class="text-[8px] opacity-40 font-bold">CEPI IRMÃ GABRIELA - ENGLISH MASTERY</p>
+    </div>
+
+    <section id="audio-selection" class="active fixed inset-0 z-[3000] bg-slate-950 flex flex-col items-center justify-center p-6 text-center">
+        <div class="mb-10">
+            <p class="copyright-tag mb-2">Pedagogical Innovation</p>
+            <h2 class="text-3xl font-black text-white uppercase italic tracking-tighter">Phonetic Experience</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4 w-full max-w-xl">
+            <button onclick="setGlobalMode('term')" class="bg-indigo-600 p-8 rounded-3xl hover:bg-indigo-500 transition-all shadow-xl">
+                <i class="fas fa-comment-dots text-3xl mb-3"></i>
+                <span class="block font-black text-sm uppercase">Isolated Sounds</span>
+            </button>
+            <button onclick="setGlobalMode('full')" class="bg-teal-600 p-8 rounded-3xl hover:bg-teal-500 transition-all shadow-xl">
+                <i class="fas fa-quote-left text-3xl mb-3"></i>
+                <span class="block font-black text-sm uppercase">Branding Context</span>
+            </button>
+        </div>
+    </section>
+
+    <header class="py-6 text-center">
+        <h1 class="text-2xl font-black italic tracking-tighter text-indigo-400 uppercase">Phonetic Lab <span class="text-white">2026</span></h1>
+        <button onclick="location.reload()" class="mt-2 opacity-40 hover:opacity-100 text-[9px] font-black uppercase tracking-widest transition">
+            <i class="fas fa-sync-alt mr-1"></i> Reset Audio Mode
+        </button>
+    </header>
+
+    <main id="main-content" class="container mx-auto max-w-4xl px-4 opacity-20 pointer-events-none flex-grow flex flex-col justify-center">
+        <div class="space-y-16">
+            <div class="shelf"><div id="shelf-1"></div></div>
+            <div class="shelf"><div id="shelf-2"></div></div>
+            <div class="shelf"><div id="shelf-3"></div></div>
+        </div>
+    </main>
+
+    <div id="vision-overlay">
+        <div class="absolute top-6 left-16"> <p class="copyright-tag opacity-60">© PROF. WILLOW</p>
+        </div>
+        <div class="absolute top-4 right-4">
+            <button onclick="closeOverlay()" class="text-white text-2xl"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div id="overlay-name" class="big-text">BRAND</div>
+        <div id="overlay-phonetic" class="big-phonetic">/phonetic/</div>
+        
+        <div id="transcription-wrapper" class="hidden mt-6 text-center">
+            <button onclick="toggleTranscription()" class="bg-white/10 border border-white/20 px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
+                <i class="fas fa-closed-captioning mr-1"></i> Show Transcription
+            </button>
+            <div id="overlay-sentence" class="transcription-text">Sentence example...</div>
+        </div>
+
+        <div class="mt-8 text-indigo-500 text-4xl"><i class="fas fa-volume-up animate-pulse"></i></div>
+    </div>
+
+    <footer class="py-6 text-center border-t border-white/5 bg-black/20">
+        <p class="copyright-tag">© 2026 PROF. JOHNATAN WILLOW DIAS DE ANDRADE</p>
+        <p class="text-[8px] text-slate-500 font-bold uppercase mt-1">CEPI Irmã Gabriela • English Pedagogical Portal • All Rights Reserved</p>
+    </footer>
+
+    <script>
+        let currentMode = 'term';
+        const brandDB = [
+            { n: "Vanish", p: "ˈvæn.ɪʃ", s: "Vanish Oxi Action for stains.", row: 1, pos: "5%" },
+            { n: "Dove", p: "dʌv", s: "Dove: real beauty care.", row: 1, pos: "28%" },
+            { n: "Omo", p: "ˈəʊ.məʊ", s: "Omo: dirt is good.", row: 1, pos: "50%" },
+            { n: "Always", p: "ˈɔːl.weɪz", s: "Always: protection all day.", row: 1, pos: "72%" },
+            { n: "Clear", p: "klɪər", s: "Clear: zero dandruff.", row: 1, pos: "93%" },
+            { n: "Apple", p: "ˈæp.əl", s: "Apple: think different.", row: 2, pos: "5%" },
+            { n: "Nike", p: "ˈnaɪ.ki", s: "Nike: just do it.", row: 2, pos: "28%" },
+            { n: "Colgate", p: "ˈkoʊl.ɡeɪt", s: "Colgate: number 1 choice.", row: 2, pos: "50%" },
+            { n: "Johnson's", p: "ˈdʒɒn.sənz", s: "Johnson's: for your baby.", row: 2, pos: "72%" },
+            { n: "Ford", p: "fɔːrd", s: "Ford: go further.", row: 2, pos: "93%" },
+            { n: "Amazon", p: "ˈæm.ə.zən", s: "Amazon: from A to Z.", row: 3, pos: "5%" },
+            { n: "Pepsi", p: "ˈpep.si", s: "Pepsi: for the love of it.", row: 3, pos: "28%" },
+            { n: "Burger King", p: "ˈbɜː.ɡər kɪŋ", s: "Burger King: have it your way.", row: 3, pos: "50%" },
+            { n: "Windows", p: "ˈwɪn.dəʊz", s: "Windows: a new era.", row: 3, pos: "72%" },
+            { n: "Heinz", p: "haɪnz", s: "Heinz: it has to be Heinz.", row: 3, pos: "93%" }
+        ];
+
+        function setGlobalMode(mode) {
+            currentMode = mode;
+            document.getElementById('audio-selection').style.display = 'none';
+            document.getElementById('main-content').classList.remove('opacity-20', 'pointer-events-none');
+            initLab();
+        }
+
+        function initLab() {
+            brandDB.forEach(brand => {
+                const shelf = document.getElementById('shelf-' + brand.row);
+                if(shelf) {
+                    const item = document.createElement('div');
+                    item.className = 'product-silhouette';
+                    item.style.left = brand.pos;
+                    item.innerHTML = brand.n;
+                    item.onclick = () => interact(brand);
+                    shelf.appendChild(item);
+                }
+            });
+        }
+
+        function interact(brand) {
+            const overlay = document.getElementById('vision-overlay');
+            const nameEl = document.getElementById('overlay-name');
+            const phonEl = document.getElementById('overlay-phonetic');
+            const sentEl = document.getElementById('overlay-sentence');
+            const transWrap = document.getElementById('transcription-wrapper');
+
+            sentEl.classList.remove('visible');
+            sentEl.innerText = brand.s;
+            nameEl.innerText = brand.n;
+            phonEl.innerText = "/" + brand.p + "/";
+            
+            if(currentMode === 'full') transWrap.classList.remove('hidden');
+            else transWrap.classList.add('hidden');
+
+            overlay.style.display = 'flex';
+            window.speechSynthesis.cancel();
+            const textToSpeak = currentMode === 'term' ? brand.n : brand.s;
+            const msg = new SpeechSynthesisUtterance(textToSpeak);
+            msg.lang = 'en-US';
+            msg.rate = 0.7;
+            window.speechSynthesis.speak(msg);
+        }
+
+        function toggleTranscription() {
+            document.getElementById('overlay-sentence').classList.toggle('visible');
+        }
+
+        function closeOverlay() {
+            document.getElementById('vision-overlay').style.display = 'none';
+            window.speechSynthesis.cancel();
+        }
+    </script>
+</body>
+</html>

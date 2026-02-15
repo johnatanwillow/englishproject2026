@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Mastery 2026 - Fundamental Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@400;600;800&display=swap');
+        body { font-family: 'Outfit', sans-serif; background-color: #f0f4f8; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: slideUp 0.4s ease; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; } }
+        .glass-card { background: white; border-radius: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #e2e8f0; }
+        .btn-check { transition: all 0.2s; border: 2px solid transparent; cursor: pointer; }
+        .btn-check:hover { transform: scale(1.02); border-color: #6366f1; background: #f8faff; }
+        .btn-check:active { transform: scale(0.98); }
+        .guild-btn { transition: all 0.3s; cursor: pointer; }
+        .guild-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .year-content { display: none; }
+        .year-content.active { display: block; }
+    </style>
+</head>
+<body class="min-h-screen pb-12">
+
+    <a href="../index.html" style="position:fixed; top:10px; left:10px; background:rgba(30, 41, 59, 0.9); color:white; padding:10px 15px; border-radius:8px; text-decoration:none; z-index:1000; font-size:12px; border: 1px solid rgba(255,255,255,0.2); font-weight:bold;">
+        <i class="fas fa-arrow-left"></i> Voltar ao Menu
+    </a>
+
+    <header class="bg-slate-900 text-white pt-16 pb-10 px-6 border-b-8 border-yellow-400">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-end">
+            <div>
+                <h1 class="text-5xl font-black tracking-tighter italic uppercase">Mastery <span class="text-indigo-400">Hub</span> 2026</h1>
+                <p class="text-slate-400 font-bold tracking-widest text-xs mt-2 uppercase">Identity • Future Dreams • Ad Literacy • Digital Environment</p>
+            </div>
+            <div class="mt-6 md:mt-0 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-white/10 text-right">
+                <p class="text-[10px] uppercase font-black text-indigo-300">CEPI IRMÃ GABRIELA</p>
+                <p class="text-lg font-black italic">Prof. Johnatan Willow</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto mt-10 px-4 text-slate-800">
+
+        <section id="main-menu" class="active glass-card p-12 text-center max-w-2xl mx-auto border-t-[12px] border-indigo-600">
+            <h2 class="text-3xl font-black text-slate-800 uppercase mb-8 italic">Choose your Year:</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <button onclick="selectYear('8')" class="guild-btn bg-indigo-600 text-white p-10 rounded-3xl font-black text-2xl shadow-xl uppercase italic">8º Ano</button>
+                <button onclick="selectYear('9')" class="guild-btn bg-teal-600 text-white p-10 rounded-3xl font-black text-2xl shadow-xl uppercase italic">9º Ano</button>
+            </div>
+        </section>
+
+        <section id="content-8" class="year-content space-y-10">
+            <nav class="bg-white shadow-md rounded-full mb-8 overflow-hidden flex justify-center p-1 gap-2">
+                <button onclick="openTab('grammar')" id="btn-grammar" class="tab-btn px-6 py-2 rounded-full font-black bg-indigo-600 text-white transition-all shadow-lg">LEARNING HUB</button>
+                <button onclick="openTab('battle')" id="btn-battle" class="tab-btn px-6 py-2 rounded-full font-black text-slate-500 hover:bg-slate-100 transition-all flex items-center gap-2">
+                    <i class="fas fa-fire text-orange-500"></i> BATTLE ARENA
+                </button>
+                <button onclick="location.reload()" class="px-6 py-2 rounded-full font-black text-red-500 hover:bg-red-50 transition-all">BACK TO YEARS</button>
+            </nav>
+
+            <div id="grammar" class="tab-content active space-y-10">
+                <div class="glass-card p-10 border-l-[12px] border-indigo-600">
+                    <h2 class="text-3xl font-black mb-8 uppercase italic flex items-center gap-4">
+                        <i class="fas fa-brain text-indigo-600"></i> Mastering the Future (EF08LI14-A)
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-6">
+                            <div class="bg-indigo-50 p-6 rounded-3xl border border-indigo-100">
+                                <h3 class="text-xl font-black text-indigo-700 mb-2 uppercase">🔮 WILL: Predictions & Dreams</h3>
+                                <p class="text-sm leading-relaxed mb-4 text-slate-600 italic">Previsões baseadas em <b>opinião, palpites ou desejos</b> de vida.</p>
+                                <div class="grid gap-2">
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-indigo-100 italic">"In 10 years, I <b>will</b> be a famous engineer." (Sonho)</div>
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-indigo-100 italic">"I believe robots <b>will</b> clean the oceans." (Opinião)</div>
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-indigo-100 italic">"Maybe I <b>will</b> travel to Japan one day." (Palpite)</div>
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-indigo-100 italic">"I'm sure we <b>will</b> live on Mars." (Crença pessoal)</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-green-50 p-6 rounded-3xl border border-green-100">
+                                <h3 class="text-xl font-black text-green-700 mb-2 uppercase">📅 GOING TO: Plans & Evidence</h3>
+                                <p class="text-sm leading-relaxed mb-4 text-slate-600 italic">Planos <b>decididos antes da fala</b> ou quando há uma <b>evidência clara</b> no presente.</p>
+                                <div class="grid gap-2">
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-green-100 italic">"I <b>am going to</b> study English at 2:00 PM." (Plano fixo)</div>
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-green-100 italic">"Look! The sun is out! It's <b>going to</b> be hot." (Evidência)</div>
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-green-100 italic">"My schedule says I <b>am going to</b> visit Di." (Agenda)</div>
+                                    <div class="bg-white p-3 rounded-xl text-sm font-bold border border-green-100 italic">"He is running fast! He <b>is going to</b> win." (Fato visível)</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="battle" class="tab-content">
+                <div id="step-grade" class="glass-card p-12 text-center max-w-2xl mx-auto border-t-[12px] border-yellow-400">
+                    <h2 class="text-3xl font-black text-slate-800 uppercase mb-8 italic">1. Select your Class:</h2>
+                    <div class="grid grid-cols-2 gap-6">
+                        <button onclick="setGrade('8A')" class="bg-slate-900 text-white p-10 rounded-3xl font-black text-3xl hover:bg-orange-600 transition-all shadow-xl">8º ANO A</button>
+                        <button onclick="setGrade('8B')" class="bg-slate-900 text-white p-10 rounded-3xl font-black text-3xl hover:bg-indigo-600 transition-all shadow-xl">8º ANO B</button>
+                    </div>
+                </div>
+                <div id="step-guild" class="hidden glass-card p-12 text-center max-w-2xl mx-auto border-t-[12px] border-orange-500">
+                    <p id="grade-display" class="font-black text-yellow-600 uppercase tracking-widest mb-2"></p>
+                    <h2 class="text-3xl font-black text-slate-800 uppercase mb-8">2. Who is playing now?</h2>
+                    <div class="grid grid-cols-2 gap-6">
+                        <button onclick="startTurn('Guerreiros')" class="guild-btn bg-orange-600 text-white p-10 rounded-3xl font-black text-xl shadow-xl">GUERREIROS <br><i class="fas fa-shield-alt text-3xl mt-2"></i></button>
+                        <button onclick="startTurn('Valentes')" class="guild-btn bg-indigo-600 text-white p-10 rounded-3xl font-black text-xl shadow-xl">VALENTES <br><i class="fas fa-bolt text-3xl mt-2"></i></button>
+                    </div>
+                    <button onclick="resetToGrade()" class="mt-12 text-xs font-bold text-slate-400 hover:text-slate-800 uppercase underline transition-all">Change Class</button>
+                </div>
+                <div id="battle-box" class="hidden max-w-4xl mx-auto space-y-6">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="glass-card p-6 border-b-8 border-orange-500 text-center"><span class="block text-xs font-black text-orange-600 uppercase mb-1">Guerreiros</span><div id="scoreG" class="text-5xl font-black">0</div></div>
+                        <div class="glass-card p-6 border-b-8 border-indigo-600 text-center"><span class="block text-xs font-black text-indigo-600 uppercase mb-1">Valentes</span><div id="scoreV" class="text-5xl font-black">0</div></div>
+                    </div>
+                    <div class="text-center bg-slate-900 text-white p-4 rounded-2xl border-b-4 border-yellow-400 shadow-xl"><div id="active-turn-label" class="text-sm font-black uppercase tracking-widest text-yellow-400">GUERREIROS PLAYING...</div><div id="q-counter" class="text-[9px] opacity-50 font-bold uppercase">Question 1/20</div></div>
+                    <div id="qCard" class="glass-card p-12 relative overflow-hidden min-h-[350px] flex flex-col justify-center border-2 border-indigo-50">
+                        <h3 id="qText" class="text-2xl font-black text-slate-800 mb-10 text-center leading-tight"></h3>
+                        <div id="options" class="grid md:grid-cols-2 gap-4"></div>
+                        <div id="feedbackBox" class="hidden absolute inset-0 z-50 bg-slate-900 flex flex-col items-center justify-center p-10 text-center">
+                            <div id="fbIcon" class="text-7xl mb-4"></div><h2 id="fbTitle" class="text-2xl font-black text-white uppercase italic mb-2"></h2><p id="fbExplain" class="text-indigo-200 text-sm mb-8"></p><button onclick="finishQuestion()" class="bg-yellow-400 text-slate-900 px-12 py-3 rounded-xl font-black uppercase hover:bg-white transition-all shadow-xl">Next Challenger</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="winScreen" class="hidden glass-card p-20 text-center border-4 border-yellow-400"><div class="text-8xl mb-6">🏆</div><h2 id="winnerName" class="text-5xl font-black mb-6 uppercase italic"></h2><p class="text-slate-500 mb-10 text-lg uppercase font-black">Success is a ladder you must climb with effort!</p><button onclick="location.reload()" class="bg-slate-900 text-white px-10 py-4 rounded-xl font-black uppercase">Restart Battle</button></div>
+            </div>
+        </section>
+
+        <section id="content-9" class="year-content space-y-10">
+            <div class="glass-card p-10 border-l-[12px] border-teal-600">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-3xl font-black mb-0 uppercase italic flex items-center gap-4 text-teal-800">
+                        <i class="fas fa-ad text-teal-600"></i> Ad Literacy (EF09LI05-A)
+                    </h2>
+                    <button onclick="backToMain()" class="bg-slate-900 text-white px-6 py-2 rounded-xl text-xs font-black shadow-lg uppercase">Back to Years</button>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="space-y-6">
+                        <div class="bg-teal-50 p-8 rounded-3xl border border-teal-100 shadow-inner">
+                            <h3 class="text-xl font-black text-teal-700 mb-4 uppercase italic tracking-tighter">Critical Analysis: Ambiente Virtual</h3>
+                            <p class="text-sm leading-relaxed mb-8 text-slate-600">
+                                Propagandas modernas não vendem apenas produtos, elas vendem <b>estilos de vida e emoções</b>. Observe como as cores e as palavras convencem você.
+                            </p>
+                            <button onclick="showAdAnalysis()" class="w-full bg-teal-600 text-white py-4 rounded-2xl font-black text-lg hover:bg-teal-700 transition-all shadow-lg active:scale-95 uppercase">
+                                <i class="fas fa-search-plus mr-2"></i> Analisar Ambiente Virtual
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="alert('SKIMMING: Olhar rápido para entender o tema geral (GIST).')" class="bg-blue-600 text-white py-4 rounded-2xl font-black text-sm uppercase shadow-md hover:bg-blue-700">Skimming</button>
+                            <button onclick="alert('SCANNING: Procurar dados específicos como datas, nomes ou preços.')" class="bg-emerald-600 text-white py-4 rounded-2xl font-black text-sm uppercase shadow-md hover:bg-emerald-700">Scanning</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="glass-card overflow-hidden shadow-2xl border-4 border-slate-900 relative group">
+                            <video id="adVideo" controls class="w-full">
+                                <source src="willow.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="absolute top-4 right-4 bg-yellow-400 text-slate-900 px-3 py-1 rounded-full text-[10px] font-black uppercase shadow-md">Case: Willow Botanical</div>
+                        </div>
+                        <div class="p-6 bg-slate-900 rounded-3xl text-white">
+                            <p class="text-[10px] uppercase font-black text-yellow-400 mb-2 tracking-widest">Digital Quiz: Question 2</p>
+                            <p class="text-sm font-bold mb-4 italic leading-tight">"Propaganda often uses 'persuasion resources'. An example of this in the video is:"</p>
+                            <button onclick="checkAdAns()" class="w-full text-left bg-white/10 hover:bg-white/20 p-3 rounded-xl text-xs font-medium border border-white/10 transition-all">
+                                Using emotional words and bright images to convince
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // --- NAVEGAÇÃO DE ANOS ---
+        function selectYear(year) {
+            document.getElementById('main-menu').classList.remove('active');
+            document.getElementById('main-menu').classList.add('hidden');
+            if(year === '8') {
+                document.getElementById('content-8').classList.add('active');
+            } else {
+                document.getElementById('content-9').classList.add('active');
+            }
+        }
+
+        function backToMain() {
+            document.querySelectorAll('.year-content').forEach(c => c.classList.remove('active'));
+            document.getElementById('main-menu').classList.remove('hidden');
+            document.getElementById('main-menu').classList.add('active');
+        }
+
+        // --- FUNÇÕES DO 9º ANO ---
+        function showAdAnalysis() {
+            alert("ANÁLISE CRÍTICA (EF09LI05-A):\n\nRecursos verbais (slogans) e não verbais (cores vibrantes e música) são usados estrategicamente no ambiente virtual para manipular o desejo do consumidor.");
+        }
+
+        function checkAdAns() {
+            alert("CORRECT! (EF09LI05-A)\n\nO vídeo 'Willow' usa jovens sorrindo, cores naturais e música animada como RECURSOS DE PERSUASÃO para associar o produto à felicidade.");
+        }
+
+        // --- LÓGICA PRESERVADA DO 8º ANO (HUB E BATTLE) ---
+        function openTab(id) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if(id === 'grammar') {
+                document.getElementById('btn-grammar').classList.replace('text-slate-500', 'bg-indigo-600');
+                document.getElementById('btn-grammar').classList.add('text-white');
+                document.getElementById('btn-battle').classList.replace('bg-indigo-600', 'text-slate-500');
+                document.getElementById('btn-battle').classList.remove('text-white');
+            } else {
+                document.getElementById('btn-battle').classList.replace('text-slate-500', 'bg-indigo-600');
+                document.getElementById('btn-battle').classList.add('text-white');
+                document.getElementById('btn-grammar').classList.replace('bg-indigo-600', 'text-slate-500');
+                document.getElementById('btn-grammar').classList.remove('text-white');
+            }
+        }
+
+        let selectedGrade = "";
+        let currentGuild = "";
+        let scores = { Guerreiros: 0, Valentes: 0 };
+        let currentQ = 0;
+
+        function setGrade(g) {
+            selectedGrade = g;
+            document.getElementById('step-grade').classList.add('hidden');
+            document.getElementById('step-guild').classList.remove('hidden');
+            document.getElementById('grade-display').innerText = "Playing as 8º ANO " + (g === '8A' ? 'A' : 'B');
+        }
+
+        function resetToGrade() {
+            document.getElementById('step-grade').classList.remove('hidden');
+            document.getElementById('step-guild').classList.add('hidden');
+        }
+
+        function startTurn(guild) {
+            currentGuild = guild;
+            document.getElementById('step-guild').classList.add('hidden');
+            document.getElementById('battle-box').classList.remove('hidden');
+            loadQ();
+        }
+
+        // DATABASE PRESERVADO
+        const database = [
+            { q: "I think robots ________ (help) us at home in 2050.", a: ["will help", "are going to help"], c: 0, why: "Predictions based on opinion use 'Will'." },
+            { q: "My schedule is fixed! I ________ (study) with the teacher at 2 PM.", a: ["will study", "am going to study"], c: 1, why: "Fixed plans and schedules use 'Going to'." },
+            { q: "In my future dream, I ________ (be) a polymath.", a: ["will be", "am going to be"], c: 0, why: "Future professional dreams use 'Will'." },
+            { q: "Look! The sun is out. It ________ (be) a hot day.", a: ["will be", "is going to be"], c: 1, why: "Predictions based on evidence in the present use 'Going to'." },
+            { q: "I already decided! I ________ (start) a diet tomorrow.", a: ["will start", "am going to start"], c: 1, why: "Intentions decided before the moment of speaking use 'Going to'." },
+            { q: "Maybe humans ________ (live) on Mars one day.", a: ["will live", "are going to live"], c: 0, why: "Uncertainty and 'Maybe' require 'Will'." },
+            { q: "Watch out! That cup ________ (fall)!", a: ["will fall", "is going to fall"], c: 1, why: "Immediate physical evidence of what is about to happen." },
+            { q: "I promise I ________ (help) you with your identity project.", a: ["will help", "am going to help"], c: 0, why: "Promises and quick offers use 'Will'." },
+            { q: "What ________ (you/do) when you finish high school?", a: ["will you do", "are you going to do"], c: 1, why: "Asking about career plans and life projects." },
+            { q: "I ________ (travel) to Goiânia next Friday. I have the tickets!", a: ["will travel", "am going to travel"], c: 1, why: "Concrete plans with evidence use 'Going to'." },
+            { q: "A person expressing their style through clothes is:", a: ["Verbal communication", "Non-verbal communication"], c: 1, why: "Visual elements and body language are non-verbal." },
+            { q: "I believe technology ________ (solve) the scarcity problem.", a: ["will solve", "is going to solve"], c: 0, why: "Personal beliefs about the global future use 'Will'." },
+            { q: "Wait! I ________ (open) the door for you.", a: ["will open", "am going to open"], c: 0, why: "Spontaneous decisions made at the moment of speaking." },
+            { q: "The image of a person climbing a mountain suggests:", a: ["Only luck", "Effort and progress"], c: 1, why: "Symbols like mountains represent growth and effort." },
+            { q: "Our class ________ (visit) the museum tomorrow at 8 AM.", a: ["will visit", "is going to visit"], c: 1, why: "Pre-arranged group plans." },
+            { q: "In my career project, I think I ________ (earn) a lot of money.", a: ["will earn", "am going to earn"], c: 0, why: "Future aspirations and expectations." },
+            { q: "I ________ (buy) a new smartphone. I am saving money now.", a: ["will buy", "am going to buy"], c: 1, why: "A plan in progress (saving) uses 'Going to'." },
+            { q: "I'm sure you ________ (like) your new identity style.", a: ["will like", "are going to like"], c: 0, why: "Giving a personal opinion about someone's future." },
+            { q: "I ________ (finish) this homework soon. Just wait!", a: ["will finish", "am going to finish"], c: 0, why: "Quick decision/offer." },
+            { q: "I ________ (study) medicine because I want to help people.", a: ["will study", "am going to study"], c: 1, why: "A settled intention for the future." }
+        ];
+
+        function loadQ() {
+            const data = database[currentQ];
+            document.getElementById('qText').innerText = data.q;
+            document.getElementById('q-counter').innerText = "Question " + (currentQ + 1) + "/20";
+            document.getElementById('active-turn-label').innerText = currentGuild + " Playing...";
+            const optDiv = document.getElementById('options');
+            optDiv.innerHTML = "";
+            data.a.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.className = "btn-check p-6 glass-card font-black text-slate-700 text-lg shadow-sm";
+                btn.innerText = opt;
+                btn.onclick = () => checkAns(i);
+                optDiv.appendChild(btn);
+            });
+        }
+
+        function checkAns(i) {
+            const data = database[currentQ];
+            const isCorrect = (i === data.c);
+            if(isCorrect) scores[currentGuild]++;
+            document.getElementById('fbIcon').innerText = isCorrect ? "🔥" : "🛡️";
+            document.getElementById('fbTitle').innerText = isCorrect ? "DIRECT HIT!" : "BLOCKED!";
+            document.getElementById('fbTitle').style.color = isCorrect ? "#4ade80" : "#f87171";
+            document.getElementById('fbExplain').innerText = data.why;
+            document.getElementById('scoreG').innerText = scores.Guerreiros;
+            document.getElementById('scoreV').innerText = scores.Valentes;
+            document.getElementById('feedbackBox').classList.remove('hidden');
+        }
+
+        function finishQuestion() {
+            currentQ++;
+            if(currentQ >= 20) {
+                document.getElementById('battle-box').classList.add('hidden');
+                document.getElementById('winScreen').classList.remove('hidden');
+                const winText = document.getElementById('winnerName');
+                if(scores.Guerreiros > scores.Valentes) { winText.innerText = "GUERREIROS WIN!"; winText.style.color = "#ea580c"; }
+                else if(scores.Valentes > scores.Guerreiros) { winText.innerText = "VALENTES WIN!"; winText.style.color = "#4f46e5"; }
+                else { winText.innerText = "IT'S A DRAW!"; }
+                return;
+            }
+            document.getElementById('feedbackBox').classList.add('hidden');
+            document.getElementById('battle-box').classList.add('hidden');
+            document.getElementById('step-guild').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
