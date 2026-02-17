@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phonetic Mastery 2026 - © Prof. Johnatan Willow</title>
+    <title>Phonetic Mastery & Daily English - Prof. Johnatan Willow</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@400;600;800&display=swap');
-        body { font-family: 'Outfit', sans-serif; background-color: #080c14; color: white; overflow: hidden; height: 100vh; }
+        /* --- ESTILOS ORIGINAIS PHONETIC MASTERY --- */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Outfit:wght@400;600;800&family=Inter:wght@300;400;600;800&display=swap');
         
-        /* Shelf & Product Design */
+        body { font-family: 'Outfit', sans-serif; background-color: #080c14; color: white; margin: 0; }
+        
         .shelf { background: linear-gradient(to bottom, #1e293b, #0f172a); height: 12px; border-radius: 20px; position: relative; margin-bottom: 50px; border: 1px solid rgba(255,255,255,0.05); }
         .product-silhouette {
             height: 75px; width: 65px; background: #1e293b; border: 2px solid #334155;
@@ -21,19 +22,61 @@
         }
         .product-silhouette:hover { transform: scale(1.1) translateY(-8px); background: #4f46e5; color: white; border-color: #818cf8; }
 
-        /* Vision Overlay - Alta Visibilidade */
-        #vision-overlay {
-            display: none; position: fixed; inset: 0; background: #000; z-index: 2000;
+        #vision-overlay-phonetic {
+            display: none; position: fixed; inset: 0; background: #000; z-index: 4000;
             flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center;
         }
         .big-text { font-size: 9vw; font-weight: 900; color: #fbbf24; line-height: 1; letter-spacing: -2px; }
         .big-phonetic { font-size: 5vw; font-family: monospace; color: #60a5fa; margin-top: 15px; background: #111827; padding: 10px 30px; border-radius: 100px; border: 2px solid #1e293b; }
         .transcription-text { font-size: 3vw; color: #fff; margin-top: 20px; font-style: italic; opacity: 0; transition: 0.3s; }
         .transcription-text.visible { opacity: 1; }
-
         .copyright-tag { font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; color: #fbbf24; }
         
-        /* Ajuste do botão de voltar para sobrepor o fundo preto */
+        /* --- ESTILOS ORIGINAIS DAILY LIFE --- */
+        :root {
+            --primary: #1e40af; --primary-light: #3b82f6; --secondary: #10b981;
+            --bg-light: #f1f5f9; --card-light: #ffffff; --text-dark: #1e293b;
+            --accent-red: #e11d48; --skim-color: #0284c7; --scan-color: #059669;
+        }
+
+        #daily-life-section { 
+            background-color: var(--bg-light); color: var(--text-dark); 
+            font-family: 'Inter', sans-serif; padding-bottom: 50px;
+        }
+
+        .instruction-box {
+            background: #eff6ff; border-left: 6px solid var(--primary-light);
+            padding: 20px; border-radius: 12px; margin-bottom: 35px; color: #1e40af;
+        }
+
+        .tab-btn {
+            padding: 12px 20px; border: 1px solid #e2e8f0; background: white;
+            border-radius: 30px; cursor: pointer; font-weight: 600; color: #64748b;
+            transition: 0.3s;
+        }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .tab-lab { border: 2px solid var(--accent-red); color: var(--accent-red); }
+        .tab-lab.active { background: var(--accent-red)!important; color: white; }
+
+        .grid-daily { display: none; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .grid-daily.active { display: grid; }
+
+        .card-daily {
+            background: white; padding: 20px; border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); border: 1px solid #e2e8f0;
+            cursor: pointer; transition: 0.3s;
+        }
+        .card-daily:hover { transform: translateY(-5px); border-color: var(--primary-light); }
+
+        .lab-content { display: none; background: white; border-radius: 20px; padding: 30px; color: var(--text-dark); }
+        .lab-content.active { display: block; }
+        
+        .clickable { cursor: pointer; border-radius: 4px; transition: 0.2s; }
+        .correct-skim { background: #bae6fd!important; border-bottom: 3px solid var(--skim-color); color: #0369a1; }
+        .correct-scan { background: #bbf7d0!important; border-bottom: 3px solid var(--scan-color); color: #15803d; }
+        .wrong { background: #fecaca!important; text-decoration: line-through; color: #b91c1c; }
+        .rescue-box { background: #0f172a; color: #f8fafc; padding: 20px; border-radius: 15px; min-height: 200px; }
+
         .back-hub-btn {
             position: fixed; top: 10px; left: 10px; background: #1e293b; color: white; 
             padding: 10px; border-radius: 5px; text-decoration: none; z-index: 3001; 
@@ -43,147 +86,258 @@
         .back-hub-btn:hover { background: #6366f1; border-color: white; }
     </style>
 </head>
-<body class="flex flex-col">
+<body>
 
-    <a href="./index.html" class="back-hub-btn">
-        <i class="fas fa-home"></i> ⬅ Voltar ao Menu
-    </a>
+    <section id="daily-life-section">
+        <header class="bg-blue-800 text-white py-12 text-center shadow-lg">
+            <h1 class="text-4xl font-extrabold">Unit 0: English in the Real World</h1>
+            <p class="text-lg opacity-80 mt-2">Expert Material by <strong>Prof. Johnatan Willow</strong> © 2026</p>
+        </header>
 
-    <div class="fixed top-4 right-6 z-[100] text-right pointer-events-none">
-        <p class="copyright-tag">© 2026 PROF. JOHNATAN WILLOW</p>
-        <p class="text-[8px] opacity-40 font-bold">CEPI IRMÃ GABRIELA - ENGLISH MASTERY</p>
-    </div>
+        <div class="max-w-6xl mx-auto px-6 py-12">
+            <div class="instruction-box flex items-center shadow-md">
+                <i class="fas fa-info-circle text-2xl mr-4"></i>
+                <p><strong>Pro-tip:</strong> Observe how English brand names describe functions. Click to hear the pronunciation!</p>
+            </div>
 
-    <section id="audio-selection" class="active fixed inset-0 z-[3000] bg-slate-950 flex flex-col items-center justify-center p-6 text-center">
-        <div class="mb-10">
-            <p class="copyright-tag mb-2">Pedagogical Innovation</p>
-            <h2 class="text-3xl font-black text-white uppercase italic tracking-tighter">Phonetic Experience</h2>
-        </div>
-        <div class="grid grid-cols-2 gap-4 w-full max-w-xl">
-            <button onclick="setGlobalMode('term')" class="bg-indigo-600 p-8 rounded-3xl hover:bg-indigo-500 transition-all shadow-xl">
-                <i class="fas fa-comment-dots text-3xl mb-3"></i>
-                <span class="block font-black text-sm uppercase">Isolated Sounds</span>
-            </button>
-            <button onclick="setGlobalMode('full')" class="bg-teal-600 p-8 rounded-3xl hover:bg-teal-500 transition-all shadow-xl">
-                <i class="fas fa-quote-left text-3xl mb-3"></i>
-                <span class="block font-black text-sm uppercase">Branding Context</span>
-            </button>
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="tab-btn active" onclick="openDailyTab(event, 'household')">Household & Pharma</button>
+                <button class="tab-btn" onclick="openDailyTab(event, 'fashion')">Fashion & Style</button>
+                <button class="tab-btn" onclick="openDailyTab(event, 'food')">Food & Drinks</button>
+                <button class="tab-btn" onclick="openDailyTab(event, 'tech')">Tech & Industry</button>
+                <button class="tab-btn" onclick="openDailyTab(event, 'media')">Media & Global</button>
+                <button class="tab-btn tab-lab" onclick="openDailyTab(event, 'reading-lab')">Reading Lab 🧪</button>
+            </div>
+
+            <div id="household" class="grid-daily active"></div>
+            <div id="fashion" class="grid-daily"></div>
+            <div id="food" class="grid-daily"></div>
+            <div id="tech" class="grid-daily"></div>
+            <div id="media" class="grid-daily"></div>
+
+            <div id="reading-lab" class="lab-content shadow-2xl">
+                <div class="grid md:grid-cols-2 gap-6 mb-10">
+                    <div class="p-6 rounded-xl bg-sky-50 border-t-4 border-sky-500">
+                        <h3 class="text-sky-700 font-bold mb-2">🔵 SKIMMING (Visão Geral)</h3>
+                        <p class="text-sm">Leia títulos e primeiras frases para captar a ideia principal (o "gist") sem se preocupar com detalhes.</p>
+                    </div>
+                    <div class="p-6 rounded-xl bg-emerald-50 border-t-4 border-emerald-500">
+                        <h3 class="text-emerald-700 font-bold mb-2">🟢 SCANNING (Busca Radar)</h3>
+                        <p class="text-sm">Varra o texto procurando informações específicas: datas, números ou palavras-chave.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:w-2/3 p-8 bg-slate-50 border-2 border-slate-100 rounded-2xl" id="lab-text">
+                        <h2 class="text-2xl font-bold mb-4 clickable" data-skim="true" data-label="Título">The Future of Green Jobs in Singapore</h2>
+                        <p class="mb-4">
+                            <span class="clickable" data-skim="true" data-label="Tese Central">Experts say that eco-friendly careers are in high demand this year.</span> 
+                            Many people are moving to the city. The weather is often hot.
+                            <span class="clickable" data-scan="true" data-label="Data">On March 15, 2026</span>, the government announced a plan.
+                        </p>
+                        <p class="mb-4">
+                            Training is necessary for everyone. The investment will be 
+                            <span class="clickable" data-scan="true" data-label="Valor">$ 2,500</span> per student in 
+                            <span class="clickable" data-scan="true" data-label="Local">Singapore</span>.
+                        </p>
+                        <p>
+                            <span class="clickable" data-skim="true" data-label="Conclusão">Ultimately, sustainability will define the global economy.</span>
+                        </p>
+                    </div>
+                    
+                    <div class="lg:w-1/3 space-y-4">
+                        <div class="p-4 bg-white border rounded-xl">
+                            <p class="text-xs font-bold text-slate-400 uppercase mb-4">Select Strategy:</p>
+                            <button id="btn-skim" class="tab-btn w-full mb-2 border-sky-500 text-sky-600" onclick="setLabMode('skim')">ACTIVATE SKIMMING</button>
+                            <button id="btn-scan" class="tab-btn w-full border-emerald-500 text-emerald-600" onclick="setLabMode('scan')">ACTIVATE SCANNING</button>
+                        </div>
+                        <div class="rescue-box">
+                            <p class="text-yellow-400 font-bold text-xs uppercase border-b border-slate-700 pb-2 mb-4">Found Data:</p>
+                            <ul id="rescued-list" class="text-sm space-y-2 italic text-slate-400">
+                                <li>Choose a mode and click the text...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <header class="py-6 text-center">
-        <h1 class="text-2xl font-black italic tracking-tighter text-indigo-400 uppercase">Phonetic Lab <span class="text-white">2026</span></h1>
-        <button onclick="location.reload()" class="mt-2 opacity-40 hover:opacity-100 text-[9px] font-black uppercase tracking-widest transition">
-            <i class="fas fa-sync-alt mr-1"></i> Reset Audio Mode
-        </button>
-    </header>
+    <section id="Shelf" class="min-h-screen flex flex-col relative bg-[#080c14]">
+        <a href="./index.html" class="back-hub-btn">
+            <i class="fas fa-home"></i> ⬅ Voltar ao Menu
+        </a>
 
-    <main id="main-content" class="container mx-auto max-w-4xl px-4 opacity-20 pointer-events-none flex-grow flex flex-col justify-center">
-        <div class="space-y-16">
-            <div class="shelf"><div id="shelf-1"></div></div>
-            <div class="shelf"><div id="shelf-2"></div></div>
-            <div class="shelf"><div id="shelf-3"></div></div>
-        </div>
-    </main>
-
-    <div id="vision-overlay">
-        <div class="absolute top-6 left-16"> <p class="copyright-tag opacity-60">© PROF. WILLOW</p>
-        </div>
-        <div class="absolute top-4 right-4">
-            <button onclick="closeOverlay()" class="text-white text-2xl"><i class="fas fa-times"></i></button>
+        <div class="fixed top-4 right-6 z-[100] text-right pointer-events-none">
+            <p class="copyright-tag">© 2026 PROF. JOHNATAN WILLOW</p>
+            <p class="text-[8px] opacity-40 font-bold">CEPI IRMÃ GABRIELA - ENGLISH MASTERY</p>
         </div>
 
-        <div id="overlay-name" class="big-text">BRAND</div>
-        <div id="overlay-phonetic" class="big-phonetic">/phonetic/</div>
-        
-        <div id="transcription-wrapper" class="hidden mt-6 text-center">
-            <button onclick="toggleTranscription()" class="bg-white/10 border border-white/20 px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
-                <i class="fas fa-closed-captioning mr-1"></i> Show Transcription
-            </button>
-            <div id="overlay-sentence" class="transcription-text">Sentence example...</div>
+        <header class="py-6 text-center">
+            <h1 class="text-2xl font-black italic tracking-tighter text-indigo-400 uppercase">Phonetic Lab <span class="text-white">2026</span></h1>
+        </header>
+
+        <main id="main-content-phonetic" class="container mx-auto max-w-4xl px-4 flex-grow flex flex-col justify-center">
+            <div class="space-y-16">
+                <div class="shelf"><div id="shelf-1"></div></div>
+                <div class="shelf"><div id="shelf-2"></div></div>
+                <div class="shelf"><div id="shelf-3"></div></div>
+            </div>
+        </main>
+
+        <div id="vision-overlay-phonetic">
+            <div class="absolute top-6 left-16"> <p class="copyright-tag opacity-60">© PROF. WILLOW</p></div>
+            <div class="absolute top-4 right-4">
+                <button onclick="closeOverlayPhonetic()" class="text-white text-2xl"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="overlay-name-phonetic" class="big-text">BRAND</div>
+            <div id="overlay-phonetic-phonetic" class="big-phonetic">/phonetic/</div>
+            <div id="transcription-wrapper-phonetic" class="mt-6 text-center">
+                <button onclick="toggleTranscriptionPhonetic()" class="bg-white/10 border border-white/20 px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest">
+                    <i class="fas fa-closed-captioning mr-1"></i> Show Transcription
+                </button>
+                <div id="overlay-sentence-phonetic" class="transcription-text">Sentence example...</div>
+            </div>
+            <div class="mt-8 text-indigo-500 text-4xl"><i class="fas fa-volume-up animate-pulse"></i></div>
         </div>
+    </section>
 
-        <div class="mt-8 text-indigo-500 text-4xl"><i class="fas fa-volume-up animate-pulse"></i></div>
-    </div>
-
-    <footer class="py-6 text-center border-t border-white/5 bg-black/20">
-        <p class="copyright-tag">© 2026 PROF. JOHNATAN WILLOW DIAS DE ANDRADE</p>
-        <p class="text-[8px] text-slate-500 font-bold uppercase mt-1">CEPI Irmã Gabriela • English Pedagogical Portal • All Rights Reserved</p>
+    <footer class="py-10 text-center bg-black text-slate-500 border-t border-white/5">
+        <p class="text-[10px] font-black uppercase tracking-widest text-yellow-500">© 2026 PROF. JOHNATAN WILLOW DIAS DE ANDRADE</p>
+        <p class="text-[8px] font-bold mt-2">CEPI IRMÃ GABRIELA • ENGLISH PEDAGOGICAL PORTAL</p>
     </footer>
 
     <script>
-        let currentMode = 'term';
-        const brandDB = [
-            { n: "Vanish", p: "ˈvæn.ɪʃ", s: "Vanish Oxi Action for stains.", row: 1, pos: "5%" },
-            { n: "Dove", p: "dʌv", s: "Dove: real beauty care.", row: 1, pos: "28%" },
-            { n: "Omo", p: "ˈəʊ.məʊ", s: "Omo: dirt is good.", row: 1, pos: "50%" },
-            { n: "Always", p: "ˈɔːl.weɪz", s: "Always: protection all day.", row: 1, pos: "72%" },
-            { n: "Clear", p: "klɪər", s: "Clear: zero dandruff.", row: 1, pos: "93%" },
-            { n: "Apple", p: "ˈæp.əl", s: "Apple: think different.", row: 2, pos: "5%" },
-            { n: "Nike", p: "ˈnaɪ.ki", s: "Nike: just do it.", row: 2, pos: "28%" },
-            { n: "Colgate", p: "ˈkoʊl.ɡeɪt", s: "Colgate: number 1 choice.", row: 2, pos: "50%" },
-            { n: "Johnson's", p: "ˈdʒɒn.sənz", s: "Johnson's: for your baby.", row: 2, pos: "72%" },
-            { n: "Ford", p: "fɔːrd", s: "Ford: go further.", row: 2, pos: "93%" },
-            { n: "Amazon", p: "ˈæm.ə.zən", s: "Amazon: from A to Z.", row: 3, pos: "5%" },
-            { n: "Pepsi", p: "ˈpep.si", s: "Pepsi: for the love of it.", row: 3, pos: "28%" },
-            { n: "Burger King", p: "ˈbɜː.ɡər kɪŋ", s: "Burger King: have it your way.", row: 3, pos: "50%" },
-            { n: "Windows", p: "ˈwɪn.dəʊz", s: "Windows: a new era.", row: 3, pos: "72%" },
-            { n: "Heinz", p: "haɪnz", s: "Heinz: it has to be Heinz.", row: 3, pos: "93%" }
-        ];
+        // --- LOGICA DAILY LIFE ---
+        const dailyData = {
+            household: [
+                { name: "Always", phonetic: "/ˈɔːl.weɪz/", meaning: "Sempre", origin: "O nome comunica a promessa de proteção ininterrupta." },
+                { name: "Clear", phonetic: "/klɪər/", meaning: "Limpo/Claro", origin: "Foca no benefício final do produto: um couro cabeludo limpo." },
+                { name: "Vanish", phonetic: "/ˈvæn.ɪʃ/", meaning: "Desaparecer", origin: "Sugere que a mancha 'evapora' instantaneamente." },
+                { name: "Dove", phonetic: "/dʌv/", meaning: "Pomba", origin: "Símbolo universal de paz e pureza." },
+                { name: "Band-Aid", phonetic: "/ˈbænd.eɪd/", meaning: "Ajuda em faixa", origin: "Junção das palavras 'Band' (faixa) e 'Aid' (ajuda)." }
+            ],
+            fashion: [
+                { name: "Nike", phonetic: "/ˈnaɪ.ki/", meaning: "Vitória", origin: "Deusa grega da vitória." },
+                { name: "Gap", phonetic: "/ɡæp/", meaning: "Lacuna", origin: "Refere-se ao 'The Generation Gap'." }
+            ],
+            food: [
+                { name: "Ruffles", phonetic: "/ˈrʌf.əlz/", meaning: "Ondas", origin: "Vem do verbo 'to ruffle' (enrugar)." },
+                { name: "Subway", phonetic: "/ˈsʌb.weɪ/", meaning: "Metrô", origin: "Formato dos sanduíches (Submarine)." }
+            ],
+            tech: [
+                { name: "Apple", phonetic: "/ˈæp.əl/", meaning: "Maçã", origin: "Nada intimidante para uma empresa de tecnologia." },
+                { name: "Windows", phonetic: "/ˈwɪn.dəʊz/", meaning: "Janelas", origin: "Interface gráfica do sistema operacional." }
+            ],
+            media: [
+                { name: "HBO", phonetic: "/ˌeɪtʃ.biːˈəʊ/", meaning: "Home Box Office", origin: "Bilheteria em Casa." },
+                { name: "Amazon", phonetic: "/ˈæm.ə.zən/", meaning: "Rio Amazonas", origin: "O maior rio para representar a maior loja." }
+            ]
+        };
 
-        function setGlobalMode(mode) {
-            currentMode = mode;
-            document.getElementById('audio-selection').style.display = 'none';
-            document.getElementById('main-content').classList.remove('opacity-20', 'pointer-events-none');
-            initLab();
+        function createDailyCards() {
+            for (let cat in dailyData) {
+                const container = document.getElementById(cat);
+                if (!container) continue;
+                dailyData[cat].forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'card-daily';
+                    card.onclick = () => speakText(item.name);
+                    card.innerHTML = `<h4 class="font-bold text-blue-700 text-lg">${item.name} 🔊</h4>
+                        <p class="text-xs text-rose-500 font-mono">${item.phonetic}</p>
+                        <p class="text-sm mt-2"><strong>${item.meaning}</strong>: ${item.origin}</p>`;
+                    container.appendChild(card);
+                });
+            }
         }
 
-        function initLab() {
+        function openDailyTab(evt, tabName) {
+            document.querySelectorAll(".grid-daily, .lab-content").forEach(g => g.classList.remove("active"));
+            document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        let currentLabMode = null;
+        function setLabMode(mode) {
+            currentLabMode = mode;
+            document.getElementById('btn-skim').classList.toggle('active', mode === 'skim');
+            document.getElementById('btn-scan').classList.toggle('active', mode === 'scan');
+            document.getElementById('rescued-list').innerHTML = `<li class="text-emerald-500 font-bold">MODO ${mode.toUpperCase()} ATIVO!</li>`;
+        }
+
+        document.querySelectorAll('.clickable').forEach(item => {
+            item.addEventListener('click', function() {
+                if (!currentLabMode) return;
+                const isCorrect = this.getAttribute('data-' + currentLabMode) === 'true';
+                if (isCorrect) {
+                    this.classList.add(currentLabMode === 'skim' ? 'correct-skim' : 'correct-scan');
+                    const li = document.createElement('li');
+                    li.innerHTML = `<span>${currentLabMode === 'skim' ? '📍' : '🔍'} ${this.innerText}</span>`;
+                    document.getElementById('rescued-list').prepend(li);
+                } else {
+                    this.classList.add('wrong');
+                }
+            });
+        });
+
+        // --- LOGICA PHONETIC MASTERY (MODO FULL ÚNICO) ---
+       const brandDB = [
+            { n: "Always", p: "ˈɔːl.weɪz", s: "Always: protection all day.", row: 1, pos: "5%" },
+            { n: "Amazon", p: "ˈæm.ə.zən", s: "Amazon: from A to Z.", row: 1, pos: "28%" },
+            { n: "Apple", p: "ˈæp.əl", s: "Apple: think different.", row: 1, pos: "50%" },
+            { n: "Burger King", p: "ˈbɜː.ɡər kɪŋ", s: "Burger King: have it your way.", row: 1, pos: "72%" },
+            { n: "Clear", p: "klɪər", s: "Clear: zero dandruff.", row: 1, pos: "93%" },
+            { n: "Colgate", p: "ˈkoʊl.ɡeɪt", s: "Colgate: number 1 choice.", row: 2, pos: "5%" },
+            { n: "Dove", p: "dʌv", s: "Dove: real beauty care.", row: 2, pos: "28%" },
+            { n: "Ford", p: "fɔːrd", s: "Ford: go further.", row: 2, pos: "50%" },
+            { n: "Heinz", p: "haɪnz", s: "Heinz: it has to be Heinz.", row: 2, pos: "72%" },
+            { n: "Johnson's", p: "ˈdʒɒn.sənz", s: "Johnson's: for your baby.", row: 2, pos: "93%" },
+            { n: "Nike", p: "ˈnaɪ.ki", s: "Nike: just do it.", row: 3, pos: "5%" },
+            { n: "Omo", p: "ˈəʊ.məʊ", s: "Omo: dirt is good.", row: 3, pos: "28%" },
+            { n: "Pepsi", p: "ˈpep.si", s: "Pepsi: for the love of it.", row: 3, pos: "50%" },
+            { n: "Vanish", p: "ˈvæn.ɪʃ", s: "Vanish Oxi Action for stains.", row: 3, pos: "72%" },
+            { n: "Windows", p: "ˈwɪn.dəʊz", s: "Windows: a new era.", row: 3, pos: "93%" }
+        ];
+
+        function initPhoneticLab() {
             brandDB.forEach(brand => {
                 const shelf = document.getElementById('shelf-' + brand.row);
-                if(shelf) {
+                if(shelf && !shelf.querySelector(`[data-name="${brand.n}"]`)) {
                     const item = document.createElement('div');
                     item.className = 'product-silhouette';
                     item.style.left = brand.pos;
                     item.innerHTML = brand.n;
-                    item.onclick = () => interact(brand);
+                    item.setAttribute('data-name', brand.n);
+                    item.onclick = () => interactPhonetic(brand);
                     shelf.appendChild(item);
                 }
             });
         }
 
-        function interact(brand) {
-            const overlay = document.getElementById('vision-overlay');
-            const nameEl = document.getElementById('overlay-name');
-            const phonEl = document.getElementById('overlay-phonetic');
-            const sentEl = document.getElementById('overlay-sentence');
-            const transWrap = document.getElementById('transcription-wrapper');
-
-            sentEl.classList.remove('visible');
-            sentEl.innerText = brand.s;
-            nameEl.innerText = brand.n;
-            phonEl.innerText = "/" + brand.p + "/";
-            
-            if(currentMode === 'full') transWrap.classList.remove('hidden');
-            else transWrap.classList.add('hidden');
-
+        function interactPhonetic(brand) {
+            const overlay = document.getElementById('vision-overlay-phonetic');
+            document.getElementById('overlay-name-phonetic').innerText = brand.n;
+            document.getElementById('overlay-phonetic-phonetic').innerText = "/" + brand.p + "/";
+            document.getElementById('overlay-sentence-phonetic').innerText = brand.s;
+            document.getElementById('overlay-sentence-phonetic').classList.remove('visible');
             overlay.style.display = 'flex';
-            window.speechSynthesis.cancel();
-            const textToSpeak = currentMode === 'term' ? brand.n : brand.s;
-            const msg = new SpeechSynthesisUtterance(textToSpeak);
-            msg.lang = 'en-US';
-            msg.rate = 0.7;
-            window.speechSynthesis.speak(msg);
+            speakText(brand.s);
         }
 
-        function toggleTranscription() {
-            document.getElementById('overlay-sentence').classList.toggle('visible');
+        function closeOverlayPhonetic() { document.getElementById('vision-overlay-phonetic').style.display = 'none'; window.speechSynthesis.cancel(); }
+        function toggleTranscriptionPhonetic() { document.getElementById('overlay-sentence-phonetic').classList.toggle('visible'); }
+
+        function speakText(text) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.7;
+            window.speechSynthesis.speak(utterance);
         }
 
-        function closeOverlay() {
-            document.getElementById('vision-overlay').style.display = 'none';
-            window.speechSynthesis.cancel();
-        }
+        createDailyCards();
+        initPhoneticLab(); // Inicia o laboratório automaticamente
     </script>
 </body>
 </html>
