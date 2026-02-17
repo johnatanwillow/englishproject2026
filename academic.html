@@ -33,6 +33,23 @@
             border: 3px solid #1e293b;
             box-shadow: 5px 5px 0px #1e293b;
         }
+        /* Estilo para manter o vídeo responsivo */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000;
+        }
+        .video-container iframe, .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
@@ -85,7 +102,7 @@
                         <h4 class="font-black text-amber-600 uppercase mb-2"><i class="fas fa-tint mr-2"></i>Incontáveis (Uncountable)</h4>
                         <ul class="text-sm space-y-2 font-bold text-slate-600">
                             <li class="flex items-start gap-2"><i class="fas fa-times text-red-500 mt-1"></i> Líquidos, massas, grãos e ideias abstratas.</li>
-                            <li class="flex items-start gap-2"><i class="fas fa-times text-red-500 mt-1"></i> NÃO têm plural (ex: Water -> Waters ❌).</li>
+                            <li class="flex items-start gap-2"><i class="fas fa-times text-red-500 mt-1"></i> NÃO têm plural (ex: Water -> Water ❌).</li>
                             <li class="flex items-start gap-2"><i class="fas fa-times text-red-500 mt-1"></i> Usam "Much" e "Little".</li>
                         </ul>
                     </div>
@@ -114,7 +131,7 @@
                 <h2 class="text-4xl font-black text-slate-800 uppercase">Prepare-se para o Combate</h2>
                 <p class="text-slate-500 mt-2 font-bold">Gere exemplos reais para atingir 100% de XP de conhecimento.</p>
             </div>
-
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div onclick="generateExample('countable')" class="heavy-btn bg-white p-8 rounded-[30px] cursor-pointer hover:bg-blue-50">
                     <div class="flex items-center gap-4 mb-4">
@@ -141,6 +158,17 @@
                         <i class="fas fa-flask mr-1"></i> Estratégia: Incontáveis! Use unidades (cups/liters/slices).
                     </p>
                 </div>
+            </div>
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="video-container border-4 border-slate-900 rounded-[30px] shadow-[8px_8px_0px_#1e293b]">
+                    <video controls allowfullscreen class="rounded-2xl">
+                        <source src="pancakeday.mp4" type="video/mp4">
+                        Seu navegador não suporta vídeos.
+                    </video>
+                </div>
+                <p class="text-center text-xs font-black uppercase text-slate-400 mt-3 italic">
+                    <i class="fas fa-play-circle mr-1"></i> Desafio: Identifique os quantificadores usados pelo Carter!
+                </p>
             </div>
         </section>
 
@@ -191,6 +219,7 @@
     </footer>
 
     <script>
+        // Scripts originais mantidos sem alteração
         let xp = 0;
         let currentGuild = 'guerreiros';
         let scores = { guerreiros: 0, valentes: 0 };
