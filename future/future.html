@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalha das Guildas: Future Mastery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a2e;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            margin: 0;
+            padding-top: 50px;
+            min-height: 100vh;
+        }
+
+        .btn-voltar {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(30, 41, 59, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            z-index: 1000;
+            font-size: 11px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+
+        header {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #16213e;
+            border-bottom: 3px solid #e67e22;
+            margin-bottom: 15px;
+        }
+
+        .video-wrapper {
+            width: 95%;
+            max-width: 700px;
+            margin-bottom: 10px;
+            background: #000;
+            border-radius: 12px;
+            border: 2px solid #e67e22;
+            overflow: hidden;
+            max-height: 45vh; 
+        }
+
+        video { width: 100%; max-height: 45vh; display: block; object-fit: contain; }
+
+        /* Botão de trocar vídeo */
+        .btn-video {
+            background: #34495e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-video:hover { background: #e67e22; }
+
+        #study-section {
+            background: #fdfdfd;
+            color: #2c3e50;
+            padding: 25px;
+            border-radius: 15px;
+            width: 95%;
+            max-width: 800px;
+            border: 3px solid #34495e;
+        }
+
+        .explanation-box { margin-bottom: 15px; padding: 12px; border-radius: 10px; }
+        .will-box { background: #fff5e6; border-left: 8px solid #e67e22; }
+        .going-box { background: #e6f7ff; border-left: 8px solid #3498db; }
+        
+        .explanation-box h4 { margin: 0 0 5px 0; color: #16213e; }
+        .explanation-box ul { margin: 5px 0; padding-left: 20px; font-size: 0.9rem; }
+
+        #game-container {
+            display: none;
+            background: #16213e;
+            padding: 20px;
+            border-radius: 20px;
+            width: 95%;
+            max-width: 850px;
+            border: 2px solid #e67e22;
+            text-align: center;
+        }
+
+        .word-display { font-size: 2rem; letter-spacing: 5px; margin: 15px 0; color: #f1c40f; font-family: 'Courier New', monospace; font-weight: bold; }
+        .keyboard { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+        .keyboard button { width: 38px; height: 38px; font-size: 0.9rem; cursor: pointer; border: none; background: #34495e; color: white; font-weight: bold; border-radius: 5px; }
+        .correct { background-color: #27ae60 !important; }
+        .wrong { background-color: #c0392b !important; opacity: 0.5; }
+
+        .btn-start, #next-btn {
+            background: #27ae60; color: white; padding: 15px; border-radius: 8px; font-size: 1.3rem;
+            cursor: pointer; border: none; font-weight: bold; width: 100%; margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <a href="../index.html" class="btn-voltar"><i class="fas fa-arrow-left"></i> ⬅ VOLTAR</a>
+
+    <header>
+        <h1>⚔️ Future Battle: Advanced Level</h1>
+        <p style="margin:0;">Prof. Johnatan Willow - CEPI Irmã Gabriela</p>
+    </header>
+
+    <div class="video-wrapper">
+        <video id="mainVideo" controls>
+            <source src="class.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+        </video>
+    </div>
+    <button class="btn-video" onclick="toggleVideo()">
+        <i class="fas fa-random"></i> Próximo Vídeo (Música/Aula)
+    </button>
+
+    <div id="study-section">
+        <h2 style="text-align: center; margin-top:0; color: #16213e;">📚 Como Vencer a Batalha (Gramática)</h2>
+        
+        <div class="explanation-box will-box">
+            <h4>⚡ WILL: O Futuro Instantâneo</h4>
+            <ul>
+                <li><strong>Quando usar:</strong> Decisões na hora, promessas e opiniões (I think...).</li>
+                <li><strong>Afirmativa:</strong> WILL + Verbo (Ex: <em>WILL OPEN</em>)</li>
+                <li><strong>Negativa:</strong> <b>WON'T</b> + Verbo (Ex: <em>WON'T WIN</em>)</li>
+                <li><strong>Pergunta:</strong> <b>WILL</b> vem antes do sujeito (Ex: <em>WILL YOU PLAY?</em>)</li>
+            </ul>
+        </div>
+
+        <div class="explanation-box going-box">
+            <h4>📋 GOING TO: O Futuro Planejado</h4>
+            <ul>
+                <li><strong>Quando usar:</strong> Planos decididos antes e previsões com provas visuais.</li>
+                <li><strong>Afirmativa:</strong> AM/IS/ARE + GOING TO + Verbo (Ex: <em>IS GOING TO DIE</em>)</li>
+                <li><strong>Negativa:</strong> <b>AREN'T / ISN'T</b> + GOING TO + Verbo (Ex: <em>AREN'T GOING TO VISIT</em>)</li>
+                <li><strong>Pergunta:</strong> <b>AM/IS/ARE</b> vem no início (Ex: <em>ARE YOU GOING TO EAT?</em>)</li>
+            </ul>
+        </div>
+        
+        <button class="btn-start" onclick="startGame()">INICIAR BATALHA DAS GUILDAS ⚔️</button>
+    </div>
+
+    <div id="game-container">
+        <div id="scoreboard" style="display:flex; justify-content: space-around; margin-bottom: 10px; font-size: 1.1rem; font-weight: bold;">
+            <span style="color:#ff4d4d">Guerreiros: <span id="score-g">0</span></span>
+            <span style="color:#4dff88">Valentes: <span id="score-v">0</span></span>
+        </div>
+        <div id="turn-indicator" style="margin-bottom: 10px; font-style: italic;"></div>
+        <div id="lives-display" style="margin-bottom: 10px;"></div>
+        <div id="question" style="font-size: 1.3rem; margin-bottom: 10px; padding: 15px; background: rgba(0,0,0,0.3); border-radius: 10px;"></div>
+        <div id="wordDisplay" class="word-display"></div>
+        <div id="keyboard" class="keyboard"></div>
+        <div id="message" style="margin-top: 15px; font-weight: bold; font-size: 1.2rem;"></div>
+        <button id="next-btn" style="display:none; background: #e67e22;">PRÓXIMO DESAFIO ➔</button>
+    </div>
+
+    <script>
+        // Função para trocar o vídeo
+        let currentVideo = 'class';
+        function toggleVideo() {
+            const video = document.getElementById('mainVideo');
+            if (currentVideo === 'class') {
+                video.src = 'music.mp4';
+                currentVideo = 'music';
+            } else {
+                video.src = 'class.mp4';
+                currentVideo = 'class';
+            }
+            video.play();
+        }
+
+        const questions = [
+            { q: "A: The doorbell is ringing! <br> B: I ____ (open) it.", a: "WILL OPEN", h: "Decisão rápida: Will + Verbo" },
+            { q: "Look! He ____ (not/win) the fight. He's exhausted.", a: "WONT WIN", h: "Negativa de Will + Verbo principal" },
+            { q: "____ you ____ (play) Free Fire with me tonight?", a: "WILL YOU PLAY", h: "Interrogativa: Will + Sujeito + Verbo" },
+            { q: "Oh no! My phone battery is 1%. It ____ (die)!", a: "IS GOING TO DIE", h: "Evidência: Is + going to + verbo" },
+            { q: "We ____ (not/study) English today. It's a holiday!", a: "ARENT GOING TO STUDY", h: "Plano Negativo: Aren't + going to + verbo" },
+            { q: "____ they ____ (travel) to Goiânia tomorrow?", a: "ARE THEY GOING TO TRAVEL", h: "Interrogativa: Are + Sujeito + going to + verbo" },
+            { q: "I promise I ____ (help) you with the project.", a: "WILL HELP", h: "Promessa: Will + Verbo" },
+            { q: "The sky is gray. It ____ (rain) very soon.", a: "IS GOING TO RAIN", h: "Evidência visual clara." }
+        ];
+
+        let currentIdx = 0;
+        let lives = 6;
+        let guessedLetters = [];
+        let scoreG = 0;
+        let scoreV = 0;
+
+        function startGame() {
+            document.getElementById('study-section').style.display = 'none';
+            document.querySelector('.video-wrapper').style.display = 'none';
+            document.querySelector('.btn-video').style.display = 'none';
+            document.getElementById('game-container').style.display = 'block';
+            initGame();
+        }
+
+        function initGame() {
+            lives = 6;
+            guessedLetters = [];
+            let item = questions[currentIdx];
+            const turnG = currentIdx % 2 === 0;
+            document.getElementById("turn-indicator").innerHTML = `⚔️ Turno: <b style="color:${turnG?'#ff4d4d':'#4dff88'}">${turnG ? 'GUERREIROS' : 'VALENTES'}</b>`;
+            document.getElementById("question").innerHTML = item.q.replace("____", "<span style='border-bottom: 2px dashed #f1c40f; padding: 0 10px;'> ? </span>") + `<br><small style="color:#bdc3c7">${item.h}</small>`;
+            document.getElementById("message").innerText = "";
+            document.getElementById("next-btn").style.display = "none";
+            updateLives();
+            renderWord();
+            renderKeyboard();
+        }
+
+        function updateLives() {
+            document.getElementById("lives-display").innerHTML = "Vidas: " + "❤️".repeat(lives);
+        }
+
+        function renderWord() {
+            const word = questions[currentIdx].a;
+            document.getElementById("wordDisplay").innerText = word.split("").map(l => guessedLetters.includes(l) ? l : "_").join(" ");
+        }
+
+        function renderKeyboard() {
+            const kb = document.getElementById("keyboard");
+            kb.innerHTML = "";
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(l => {
+                const btn = document.createElement("button");
+                btn.innerText = l;
+                btn.onclick = () => {
+                    if (questions[currentIdx].a.includes(l)) {
+                        guessedLetters.push(l);
+                        btn.classList.add("correct");
+                        renderWord();
+                        if (!document.getElementById("wordDisplay").innerText.includes("_")) {
+                            document.getElementById("message").innerHTML = "🎯 EXCELENTE! Ponto para a guilda.";
+                            if (currentIdx % 2 === 0) scoreG++; else scoreV++;
+                            updateScore();
+                            endTurn();
+                        }
+                    } else {
+                        lives--;
+                        btn.classList.add("wrong");
+                        updateLives();
+                        if (lives <= 0) {
+                            document.getElementById("message").innerHTML = "💥 DERROTA! A resposta era: " + questions[currentIdx].a;
+                            endTurn();
+                        }
+                    }
+                    btn.disabled = true;
+                };
+                kb.appendChild(btn);
+            });
+        }
+
+        function endTurn() {
+            document.querySelectorAll(".keyboard button").forEach(b => b.disabled = true);
+            document.getElementById("next-btn").style.display = "block";
+        }
+
+        function updateScore() {
+            document.getElementById("score-g").innerText = scoreG;
+            document.getElementById("score-v").innerText = scoreV;
+        }
+
+        document.getElementById("next-btn").onclick = () => {
+            currentIdx++;
+            if (currentIdx < questions.length) initGame();
+            else {
+                let vitoriosa = scoreG > scoreV ? "GUERREIROS" : (scoreV > scoreG ? "VALENTES" : "EMPATE");
+                alert(`FIM DA BATALHA!\n\nVITÓRIA: ${vitoriosa}!`);
+                location.reload();
+            }
+        };
+    </script>
+</body>
+</html>
